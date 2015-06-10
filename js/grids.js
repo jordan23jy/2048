@@ -2,8 +2,8 @@ var NO_GRIDS = 4;
 
 var Grid = function(noGrids) {
 	this.noGrids = NO_GRIDS;
-	this.cellArray = []
-}
+	this.cellArray = [];
+};
 
 Grid.prototype.init = function() {
 	var self = this;
@@ -57,6 +57,42 @@ Grid.prototype.setCellValue = function(index, value) {
 	cell.value = value;
 };
 
+Grid.prototype.closeGapCells = function(cell) {
+	for (var i = 0; i < cell.length; i++) {
+		var x = i+1;
+		// go to next loop if cell already has a value
+		if (cell[i] !== 0) {continue;}
+
+		// search for the furthers values between gaps 0
+		while (cell[x] === 0 && x < cell.length) {
+			x++
+		}
+		// break if cell ahead is over the grid
+		if (x === cell.length) {
+			break;
+		}
+		cell[i] = cell[x];
+		cell[x] = 0;
+	}
+};
+
+Grid.prototype.mergeCells = function(cell) {
+	for (var i = 0; i < cell.length-1; i++) {
+		var x = i+1;
+		// merge if current cell if equal to cell ahead
+		if (cell[i] === cell[i+1]) {
+			cell[i] *= 2;
+			cell[x] = 0;
+		}
+	}
+};
+
+Grid.prototype.moveCells = function(cell) {
+	this.closeGapCells(cell);
+	this.mergeCells(cell);
+	this.closeGapCells(cell);
+};
+
 var grids = new Grid(NO_GRIDS);
 grids.init();
 
@@ -71,5 +107,26 @@ function Cells(index, noGrids, elem) {
 	this.y = index % noGrids;
 	this.elem = elem;
 }
+
+Cells.prototype.removeCells = function(row) {
+
+};
+
+Cells.prototype.move = function(cell) {
+
+	for (var i = 0; i < this.noGrids; i++) {
+		// undefined if out of grid
+		if (cell[i+1] === undefined) {
+			break;
+		}
+		// merge if current cell if equal to cell ahead
+		if (cell[i] === cel[i+1]) {
+			cell[i] *= 2;
+			cell[i+1] = 0;
+		}
+	}
+};
+
+
 
 
