@@ -3,7 +3,7 @@
   #grids .grid-cell {
     height: 80px;
     width: 80px;
-    background-color: green;
+    background-color: #eee4da;
     float: left;
     border-radius: 5px;
     margin-left: 10px; }

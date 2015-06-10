@@ -1,12 +1,21 @@
 $grid-height: 80px;
 $grid-width: 80px;
 $grid-spacing: 10px;
+
+
+$text-color: #776E65;
+$bright-text-color: #f9f6f2;
+
+$cell-color: #eee4da;
+$cell-gold-color: #edc22e;
+$cell-gold-glow-color: lighten($cell-gold-color, 15%);
+
 #grids {
 	position: absolute;
 	.grid-cell {
 		height: $grid-height;
 		width: $grid-width;
-		background-color: green;
+		background-color: $cell-color;
 		float: left;
 		border-radius: 5px;
 		margin-left: $grid-spacing;
