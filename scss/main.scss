@@ -1,24 +1,53 @@
 $grid-height: 80px;
 $grid-width: 80px;
-$grid-spacing: 10px;
+$grid-spacing: 5px;
 
 
 $text-color: #776E65;
 $bright-text-color: #f9f6f2;
+$background-color: #faf8ef;
 
 $cell-color: #eee4da;
 $cell-gold-color: #edc22e;
 $cell-gold-glow-color: lighten($cell-gold-color, 15%);
 
+$gameOverOverlayColor: rgba(238, 228, 218, 0.73);
+
+$wonOverlayColor: rgba(237, 194, 46, 0.5);
+
+html, body {
+  margin: 0;
+  padding: 0;
+	position: relative;
+  background: $background-color;
+  color: $text-color;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+}
+.container {
+	margin: 0 auto;
+	width: 500px;
+}
 #grids {
 	position: absolute;
+	background-color: darken($cell-color, 10%);
+	padding: 13px 13px 8px 8px;
+	display: block;
+	border-radius: 5px;
+	float: center;
+	top: 100px;
+
 	.grid-cell {
 		height: $grid-height;
 		width: $grid-width;
 		background-color: $cell-color;
+		display: block;
 		float: left;
 		border-radius: 5px;
 		margin-left: $grid-spacing;
+		text-align: center;
+		line-height: $grid-height;
+		font-size: 2em;
 	}
 
 	.grid-row {

@@ -11,8 +11,12 @@ Grid.prototype.init = function() {
 	// render grid elements
 	this.render();
 	// set two random values in cells
-	self.randomValue();
-	self.randomValue();
+	setTimeout(function(){
+		self.randomValue();
+		self.randomValue();
+	}, 0);
+
+
 };
 
 Grid.prototype.render = function() {
@@ -31,7 +35,6 @@ Grid.prototype.render = function() {
 			self.cellArray.push(new Cells(i, self.noGrids, cols));
 		}
 	}
-	return self.cellArray;
 };
 
 Grid.prototype.randomValue = function() {
@@ -43,19 +46,13 @@ Grid.prototype.randomValue = function() {
 	// otherwise recurse function
 	if (self.cellArray[randomIndex].value === 0) {
 		console.log("passed: " + randomIndex);
-		self.setCellValue(randomIndex, randomValue);
+		self.cellArray[randomIndex].setCellValue(randomValue);
 	} else {
 		console.log('recursion');
 		self.randomValue();
 	}
 };
 
-Grid.prototype.setCellValue = function(index, value) {
-	var cell = this.cellArray[index];
-
-	cell.elem.innerHTML = value;
-	cell.value = value;
-};
 
 Grid.prototype.closeGapCells = function(cell) {
 	for (var i = 0; i < cell.length; i++) {
@@ -112,21 +109,55 @@ Cells.prototype.removeCells = function(row) {
 
 };
 
-Cells.prototype.move = function(cell) {
-
-	for (var i = 0; i < this.noGrids; i++) {
-		// undefined if out of grid
-		if (cell[i+1] === undefined) {
+Cells.prototype.setCellValue = function(num) {
+	// var cell = this.cellArray[index];
+	// cell.elem.innerHTML = value;
+	this.value = num;
+	switch(num) {
+		case 0:
+			this.elem.innerHTML = '';
+			this.elem.style.backgroundColor = '#eee4da';
+			return;
+		case 2:
+			this.elem.style.backgroundColor = '#faf8ef';
 			break;
-		}
-		// merge if current cell if equal to cell ahead
-		if (cell[i] === cel[i+1]) {
-			cell[i] *= 2;
-			cell[i+1] = 0;
-		}
+		case 4:
+			this.elem.style.backgroundColor = '#EDE0C8';
+			break;
+		case 8:
+			this.elem.style.backgroundColor = '#f78e48';
+			break;
+		case 16:
+			this.elem.style.backgroundColor = '#fc5e2e';
+			break;
+		case 32:
+			this.elem.style.backgroundColor = '#ff3333';
+			break;
+		case 64:
+			this.elem.style.backgroundColor = '#ff0000';
+			break;
+		case 128:
+			this.elem.style.backgroundColor = '#EDCF72';
+			break;
+		case 256:
+			this.elem.style.backgroundColor = '#EDCC61';
+			break;
+		case 512:
+			this.elem.style.backgroundColor = '#EDC850';
+			break;
+		case 1024:
+			this.elem.style.backgroundColor = '#EDC53F';
+			break;
+		case 2048:
+			this.elem.style.backgroundColor = '#EDC22E';
+			break;
+		default:
+			this.elem.innerHTML = '';
+			this.elem.style.backgroundColor = '#eee4da';
 	}
+	this.elem.innerHTML = num;
 };
 
-
-
-
+Cells.prototype.console = function() {
+	console.log("HELLO");
+}

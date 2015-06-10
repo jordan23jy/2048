@@ -32,6 +32,7 @@ EventHandler.prototype.keyboardInput = function() {
 EventHandler.prototype.moveUp = function() {
 	var self = this;
 	var noGrids = this.grids.noGrids
+	// this.grids.cellArray[0].testing(2);
 	for (var x = 0; x < noGrids; x++) {
 		// collect cell values in its direction; column by column
 		var cols = [];
@@ -50,7 +51,7 @@ EventHandler.prototype.moveUp = function() {
 		// new position of cells in cols array
 		// render/update the cell values in the DOM
 		for (y = 0; y < noGrids; y++) {
-			self.grids.setCellValue(x+(4*y), cols[y] ? cols[y] : 0);
+			self.grids.cellArray[x+(4*y)].setCellValue(cols[y] ? cols[y] : 0);
 		}
 	}
 };
@@ -71,7 +72,7 @@ EventHandler.prototype.moveDown = function() {
 		self.grids.moveCells(cols);
 
 		for (y = 0; y < noGrids; y++) {
-			self.grids.setCellValue(x+(12-y*4), cols[y] ? cols[y] : 0);
+			self.grids.cellArray[x+(12-y*4)].setCellValue(cols[y] ? cols[y] : 0);
 		}
 
 	}
@@ -90,7 +91,7 @@ EventHandler.prototype.moveLeft = function() {
 		self.grids.moveCells(rows);
 
 		for (x = 0; x < noGrids; x++) {
-			self.grids.setCellValue(x+(4*y), rows[x] ? rows[x] : 0);
+			self.grids.cellArray[x+(4*y)].setCellValue(rows[x] ? rows[x] : 0);
 		}
 	}
 };
@@ -107,7 +108,7 @@ EventHandler.prototype.moveRight = function() {
 		self.grids.moveCells(rows);
 
 		for (x = 0; x < noGrids; x++) {
-			self.grids.setCellValue((3-x)+(4*y), rows[x] ? rows[x] : 0);
+			self.grids.cellArray[(3-x)+(4*y)].setCellValue(rows[x] ? rows[x] : 0);
 		}
 
 	}

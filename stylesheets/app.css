@@ -1,14 +1,37 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: #faf8ef;
+  color: #776E65;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px; }
+
+.container {
+  margin: 0 auto;
+  width: 500px; }
+
 #grids {
-  position: absolute; }
+  position: absolute;
+  background-color: #decbb7;
+  padding: 13px 13px 8px 8px;
+  display: block;
+  border-radius: 5px;
+  float: center;
+  top: 100px; }
   #grids .grid-cell {
     height: 80px;
     width: 80px;
     background-color: #eee4da;
+    display: block;
     float: left;
     border-radius: 5px;
-    margin-left: 10px; }
+    margin-left: 5px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 2em; }
   #grids .grid-row {
-    margin-bottom: 10px; }
+    margin-bottom: 5px; }
     #grids .grid-row:after {
       content: "";
       display: block;
