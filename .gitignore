@@ -1,0 +1,8 @@
+.codekit-cache
+bower_components
+config.codekit
+config.rb
+Gemfile
+Gemfile.lock
+humans.txt
+robots.txt

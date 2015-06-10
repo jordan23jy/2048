@@ -1,0 +1,15 @@
+#grids {
+  position: absolute; }
+  #grids .grid-cell {
+    height: 80px;
+    width: 80px;
+    background-color: green;
+    float: left;
+    border-radius: 5px;
+    margin-left: 10px; }
+  #grids .grid-row {
+    margin-bottom: 10px; }
+    #grids .grid-row:after {
+      content: "";
+      display: block;
+      clear: both; }
