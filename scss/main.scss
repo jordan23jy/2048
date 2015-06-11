@@ -7,6 +7,13 @@ $text-color: #776E65;
 $bright-text-color: #f9f6f2;
 $background-color: #faf8ef;
 
+$blue: #0090C0;
+$red:   #E0645C;
+$dark:  #444444;
+$light: #999999;
+$green: #46b98a;
+$white: #FFFFFF;
+
 $cell-color: #eee4da;
 $cell-gold-color: #edc22e;
 $cell-gold-glow-color: lighten($cell-gold-color, 15%);
@@ -14,6 +21,19 @@ $cell-gold-glow-color: lighten($cell-gold-color, 15%);
 $gameOverOverlayColor: rgba(238, 228, 218, 0.73);
 
 $wonOverlayColor: rgba(237, 194, 46, 0.5);
+
+$transition-speed: 100ms;
+@include keyframes(appear) {
+  0% {
+    opacity: 0;
+    @include transform(scale(0));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+}
 
 html, body {
   margin: 0;
@@ -24,18 +44,83 @@ html, body {
   font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 18px;
 }
+
 .container {
+	padding-top: 40px;
 	margin: 0 auto;
 	width: 500px;
 }
+.row {
+	width: 100%;
+	padding: 20px 0 20px 0;
+}
+
+.heading {
+	span {
+		margin: 5px;
+
+	}
+	.title {
+		float: left;
+		font-size: 90px;
+		font-weight: 800;
+	}
+	.score {
+		float: right;
+	}
+	.best {
+		float: right;
+	}
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+}
+
+.button {
+  border: 0 none;
+  border-radius: 2px 2px 2px 2px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 0;
+  margin-top: 10px;
+  padding: 7px 10px;
+  text-transform: none;
+  transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  width: 16.795%; /* auto */
+  text-align: center; /* DELETE WHEN WIDTH AUTO */
+  &.red {
+    background: none repeat scroll 0 0 $red;
+    color: $white;
+    &:hover {
+      background: none repeat scroll 0 0 $light;
+      color: $white;
+    }
+  }
+}
+
+#new-game {
+	float: right;
+}
+
 #grids {
 	position: absolute;
 	background-color: darken($cell-color, 10%);
 	padding: 13px 13px 8px 8px;
 	display: block;
-	border-radius: 5px;
+	// border-radius: 5px;
+	@include border-radius(5px);
 	float: center;
-	top: 100px;
+	margin-top: 40px;
 
 	.grid-cell {
 		height: $grid-height;
@@ -48,6 +133,10 @@ html, body {
 		text-align: center;
 		line-height: $grid-height;
 		font-size: 2em;
+
+		@include animation(appear 200ms ease 100ms);
+		@include animation-fill-mode(backwards);
+
 	}
 
 	.grid-row {

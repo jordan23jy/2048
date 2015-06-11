@@ -3,6 +3,7 @@
 // $(document).foundation();
 
 //TODO:
-// create matrix
-// include random numbers
-// merge numbers
+// animation
+// records - high score; current score
+// local storage
+// restart button

@@ -2,6 +2,11 @@ var EventHandler = function(grids) {
 	this.grids = grids;
 };
 
+EventHandler.prototype.init = function() {
+	this.keyboardInput();
+	this.mouseEvents();
+}
+
 EventHandler.prototype.keyboardInput = function() {
 	var self = this;
 	window.onkeydown = function(event) {
@@ -30,6 +35,16 @@ EventHandler.prototype.keyboardInput = function() {
 			self.grids.randomValue();
 		}
 		console.log(this.grids.cellHasMoved());
+	};
+
+};
+
+EventHandler.prototype.mouseEvents = function() {
+	var self = this;
+	var resetButton = document.getElementById('new-game');
+
+	resetButton.onclick = function(e) {
+		self.grids.resetGame();
 	};
 };
 

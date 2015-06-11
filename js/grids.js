@@ -1,4 +1,5 @@
-var Grid = function(noGrids) {
+var Grid = function(noGrids, score) {
+	this.scores = scores;
 	this.noGrids = noGrids;
 	this.cellArray = [];
 };
@@ -69,12 +70,14 @@ Grid.prototype.closeGapCells = function(cell) {
 };
 
 Grid.prototype.mergeCells = function(cell) {
+	var self = this;
 	for (var i = 0; i < cell.length-1; i++) {
 		var x = i+1;
 		// merge if current cell if equal to cell ahead
 		if (cell[i] === cell[i+1]) {
 			cell[i] *= 2;
 			cell[x] = 0;
+			self.scores.addScore(cell[i]);
 		}
 	}
 };
@@ -96,3 +99,10 @@ Grid.prototype.cellHasMoved = function() {
 	}
 	return statusArray.indexOf(true) > -1 ? true : false;
 }
+
+Grid.prototype.resetGame = function() {
+	this.scores.reset();
+};
+Grid.prototype.console = function() {
+	console.log("hello");
+};

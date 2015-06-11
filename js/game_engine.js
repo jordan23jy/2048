@@ -16,7 +16,9 @@
 // };
 
 var NO_GRIDS = 4;
-var grids = new Grid(NO_GRIDS);
-grids.init();
+var scores = new Scores();
+var grids = new Grid(NO_GRIDS, scores);
 var events = new EventHandler(grids);
-events.keyboardInput();
+scores.init()
+grids.init();
+events.init();

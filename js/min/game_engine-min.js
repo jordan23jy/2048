@@ -1,1 +1,1 @@
-var NO_GRIDS=4,grids=new Grid(NO_GRIDS);grids.init();var events=new EventHandler(grids);events.keyboardInput();
+var NO_GRIDS=4,scores=new Scores,grids=new Grid(NO_GRIDS,scores),events=new EventHandler(grids);scores.init(),grids.init(),events.keyboardInput();

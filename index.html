@@ -9,12 +9,24 @@
   </head>
   <body>
     <div class="container">
-      <div id="grids"></div>
+      <div class="row">
+        <div class="heading">
+          <div class="title">2048</div>
+          <div class="score"><span>SCORE</span><span id="score"></span></div>
+          <div class="best"><span>BEST</span><span id="best"></span></div>
+        </div>
+        <div class="clear"></div>
+        <button class="button red" id="new-game">New Game</button>
+      </div>
+      <div class="row">
+        <div id="grids"></div>
+      </div>
+
     </div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- <script src="bower_components/foundation/js/foundation.min.js"></script> -->
-
+    <script src="js/scores.js"></script>
     <script src="js/cells.js"></script>
     <script src="js/grids.js"></script>
     <script src="js/event_handler.js"></script>
