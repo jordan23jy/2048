@@ -89,6 +89,8 @@ html, body {
     .button.red:hover {
       background: none repeat scroll 0 0 #999999;
       color: #FFFFFF; }
+  .button:focus {
+    outline: 0; }
 
 #new-game {
   float: right; }

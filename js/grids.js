@@ -16,6 +16,16 @@ Grid.prototype.init = function() {
 	}, 0);
 };
 
+Grid.prototype.reset = function() {
+	for (var i = 0; i < this.cellArray.length; i++) {
+		this.cellArray[i].setCellValue(0);
+		this.cellArray[i].oldValue = 0;
+		this.cellArray[i].hasMoved = false;
+	}
+	this.randomValue();
+	this.randomValue();
+}
+
 Grid.prototype.render = function() {
 	var self = this;
 	var parent = document.getElementById('grids');
@@ -101,6 +111,7 @@ Grid.prototype.cellHasMoved = function() {
 }
 
 Grid.prototype.resetGame = function() {
+	this.reset();
 	this.scores.reset();
 };
 Grid.prototype.console = function() {

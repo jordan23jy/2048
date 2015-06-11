@@ -106,6 +106,9 @@ html, body {
       color: $white;
     }
   }
+  &:focus {
+  	outline: 0;
+  }
 }
 
 #new-game {
