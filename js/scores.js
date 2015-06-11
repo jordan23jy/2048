@@ -1,6 +1,7 @@
 var Scores = function() {
 	this.score = 0;
 	this.bestScore = 0;
+
 	this.scoreDom = document.getElementById('score');
 	this.bestScoreDom = document.getElementById('best');
 	this.newGame = document.getElementById('new-game');

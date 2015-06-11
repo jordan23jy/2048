@@ -2,13 +2,15 @@ var Grid = function(noGrids, score) {
 	this.scores = scores;
 	this.noGrids = noGrids;
 	this.cellArray = [];
+	this.gameRunning = false;
 };
 
 Grid.prototype.init = function() {
 	var self = this;
-	var cell;
+
 	// render grid elements
 	this.render();
+	this.gameRunning = true;
 	// set two random values in cells
 	setTimeout(function(){
 		self.randomValue();
@@ -22,9 +24,10 @@ Grid.prototype.reset = function() {
 		this.cellArray[i].oldValue = 0;
 		this.cellArray[i].hasMoved = false;
 	}
+	this.gameRunning = true;
 	this.randomValue();
 	this.randomValue();
-}
+};
 
 Grid.prototype.render = function() {
 	var self = this;
@@ -48,6 +51,11 @@ Grid.prototype.randomValue = function() {
 	var self = this;
 	var randomValue = Math.random() < 0.5 ? 2 : 4;
 	var randomIndex = Math.floor((Math.random() * this.noGrids * this.noGrids));
+
+	// prevent from inserting value if grid is full
+	if (self.gridIsFull()) {
+		return;
+	}
 
 	// generate random index only on available cells
 	// otherwise recurse function
@@ -108,12 +116,56 @@ Grid.prototype.cellHasMoved = function() {
 		statusArray.push(status);
 	}
 	return statusArray.indexOf(true) > -1 ? true : false;
-}
+};
+
+Grid.prototype.checkGameOver = function() {
+	return !this.movable() && this.gridIsFull() ? true : false;
+};
+
+Grid.prototype.movable = function() {
+	var self = this;
+	// check if cells can move vertically
+	for (var j = 0; j < 12; j++) {
+		if (self.cellArray[j].value === self.cellArray[j+4].value) {
+			return true;
+		}
+	}
+	// check if cells can move horizontally
+	for (var x = 0; x < 4; x++) {
+		for (var y = 0; y < 3; y++) {
+			if (self.cellArray[x*4+y].value === self.cellArray[x*4+y+1].value) {
+				return true;
+			}
+		}
+	}
+	return false;
+};
+
+Grid.prototype.gridIsFull = function() {
+	var self = this;
+	// check if grid is full
+	for (var i = 0; i < 16; i++) {
+		if (self.cellArray[i].value === 0) {
+			return false;
+		}
+	}
+	return true;
+};
+
+Grid.prototype.checkGameWon = function() {
+	var self = this;
+	for (var i = 0; i < self.cellArray.length; i++) {
+		if (self.cellArray[i].value === 16) {
+			return true;
+		}
+	}
+	return false;
+};
 
 Grid.prototype.resetGame = function() {
 	this.reset();
 	this.scores.reset();
 };
 Grid.prototype.console = function() {
-	console.log("hello");
+	console.log(self.cellArray[0]);
 };

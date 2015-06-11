@@ -5,7 +5,6 @@
 //TODO:
 // records - high score; current score
 // local storage
-// restart button
 // game win
 // game over
 // animation

@@ -9,8 +9,12 @@ EventHandler.prototype.init = function() {
 
 EventHandler.prototype.keyboardInput = function() {
 	var self = this;
+
 	window.onkeydown = function(event) {
 		// console.log(event.keyCode);
+		if (!self.grids.gameRunning) {
+			return;
+		}
 		switch(event.keyCode) {
 			case 37:
 				event.preventDefault();
@@ -34,7 +38,16 @@ EventHandler.prototype.keyboardInput = function() {
 		if (this.grids.cellHasMoved()) {
 			self.grids.randomValue();
 		}
-		console.log(this.grids.cellHasMoved());
+		// console.log(this.grids.cellHasMoved());
+		// self.grids.console();
+		if (self.grids.checkGameOver()) {
+			self.grids.gameRunning = false;
+			alert("game over");
+		}
+		if (self.grids.checkGameWon()) {
+			self.grids.gameRunning = false;
+			alert("You Won!");
+		}
 	};
 
 };

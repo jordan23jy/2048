@@ -117,3 +117,13 @@ EventHandler.prototype.moveUps = function() {
 	// 	}
 	// }
 };
+
+var blank = function() {
+	function rows() {
+		for (var x = 0; x < 16; x++) {
+			var row = x % 4;
+			var column = Math.floor(x / 4);
+			var index = a + 4*b;
+		}
+	}
+};
