@@ -1,7 +1,5 @@
-var NO_GRIDS = 4;
-
 var Grid = function(noGrids) {
-	this.noGrids = NO_GRIDS;
+	this.noGrids = noGrids;
 	this.cellArray = [];
 };
 
@@ -15,8 +13,6 @@ Grid.prototype.init = function() {
 		self.randomValue();
 		self.randomValue();
 	}, 0);
-
-
 };
 
 Grid.prototype.render = function() {
@@ -53,7 +49,6 @@ Grid.prototype.randomValue = function() {
 	}
 };
 
-
 Grid.prototype.closeGapCells = function(cell) {
 	for (var i = 0; i < cell.length; i++) {
 		var x = i+1;
@@ -62,7 +57,7 @@ Grid.prototype.closeGapCells = function(cell) {
 
 		// search for the furthers values between gaps 0
 		while (cell[x] === 0 && x < cell.length) {
-			x++
+			x++;
 		}
 		// break if cell ahead is over the grid
 		if (x === cell.length) {
@@ -85,79 +80,19 @@ Grid.prototype.mergeCells = function(cell) {
 };
 
 Grid.prototype.moveCells = function(cell) {
+	var self = this;
+
 	this.closeGapCells(cell);
 	this.mergeCells(cell);
 	this.closeGapCells(cell);
 };
 
-var grids = new Grid(NO_GRIDS);
-grids.init();
-
-
-
-/*========== CELLS ==========*/
-function Cells(index, noGrids, elem) {
-	this.index = index;
-	this.value = 0;
-	this.x = Math.floor(index / noGrids);
-	this.noGrids = noGrids;
-	this.y = index % noGrids;
-	this.elem = elem;
-}
-
-Cells.prototype.removeCells = function(row) {
-
-};
-
-Cells.prototype.setCellValue = function(num) {
-	// var cell = this.cellArray[index];
-	// cell.elem.innerHTML = value;
-	this.value = num;
-	switch(num) {
-		case 0:
-			this.elem.innerHTML = '';
-			this.elem.style.backgroundColor = '#eee4da';
-			return;
-		case 2:
-			this.elem.style.backgroundColor = '#faf8ef';
-			break;
-		case 4:
-			this.elem.style.backgroundColor = '#EDE0C8';
-			break;
-		case 8:
-			this.elem.style.backgroundColor = '#f78e48';
-			break;
-		case 16:
-			this.elem.style.backgroundColor = '#fc5e2e';
-			break;
-		case 32:
-			this.elem.style.backgroundColor = '#ff3333';
-			break;
-		case 64:
-			this.elem.style.backgroundColor = '#ff0000';
-			break;
-		case 128:
-			this.elem.style.backgroundColor = '#EDCF72';
-			break;
-		case 256:
-			this.elem.style.backgroundColor = '#EDCC61';
-			break;
-		case 512:
-			this.elem.style.backgroundColor = '#EDC850';
-			break;
-		case 1024:
-			this.elem.style.backgroundColor = '#EDC53F';
-			break;
-		case 2048:
-			this.elem.style.backgroundColor = '#EDC22E';
-			break;
-		default:
-			this.elem.innerHTML = '';
-			this.elem.style.backgroundColor = '#eee4da';
+Grid.prototype.cellHasMoved = function() {
+	var self = this;
+	var statusArray = [];
+	for (var i = 0; i < 16; i++) {
+		var status = this.cellArray[i].setHasMoved();
+		statusArray.push(status);
 	}
-	this.elem.innerHTML = num;
-};
-
-Cells.prototype.console = function() {
-	console.log("HELLO");
+	return statusArray.indexOf(true) > -1 ? true : false;
 }

@@ -1,1 +1,1 @@
-var Game=function(a){this.cellArray=a};
+var GameEngine=function(){var n=4;this.grids=new Grid(n),this.events=new EventHandler(this.grids)};GameEngine.prototype.init=function(){this.grids.init(),this.events.keyboardInput()},window.onload=function(){(new GameEngine).init()};

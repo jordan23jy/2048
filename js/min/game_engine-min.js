@@ -1,0 +1,1 @@
+var NO_GRIDS=4,grids=new Grid(NO_GRIDS);grids.init();var events=new EventHandler(grids);events.keyboardInput();

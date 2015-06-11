@@ -25,13 +25,17 @@ EventHandler.prototype.keyboardInput = function() {
 				break;
 			default: return;
 		}
+
+		if (this.grids.cellHasMoved()) {
+			self.grids.randomValue();
+		}
+		console.log(this.grids.cellHasMoved());
 	};
 };
 
-
 EventHandler.prototype.moveUp = function() {
 	var self = this;
-	var noGrids = this.grids.noGrids
+	var noGrids = this.grids.noGrids;
 	// this.grids.cellArray[0].testing(2);
 	for (var x = 0; x < noGrids; x++) {
 		// collect cell values in its direction; column by column
@@ -39,14 +43,9 @@ EventHandler.prototype.moveUp = function() {
 		for (var y = 0; y < noGrids; y++) {
 			cols[y] = self.grids.cellArray[x+(4*y)].value;
 		}
-		// console.log("====BEFORE====");
-		// console.log(cols);
 
 		// move cell of current column iterated
 		self.grids.moveCells(cols);
-
-		// console.log("====AFTER====");
-		// console.log(cols);
 
 		// new position of cells in cols array
 		// render/update the cell values in the DOM
@@ -80,7 +79,7 @@ EventHandler.prototype.moveDown = function() {
 
 EventHandler.prototype.moveLeft = function() {
 	var self = this;
-	var noGrids = this.grids.noGrids
+	var noGrids = this.grids.noGrids;
 	for (var y = 0; y < noGrids; y++) {
 		var rows = [];
 
@@ -98,7 +97,7 @@ EventHandler.prototype.moveLeft = function() {
 
 EventHandler.prototype.moveRight = function() {
 	var self = this;
-	var noGrids = this.grids.noGrids
+	var noGrids = this.grids.noGrids;
 	for (var y = 0; y < noGrids; y++) {
 		var rows = [];
 		for (var x = 0; x < noGrids; x++) {
@@ -113,7 +112,3 @@ EventHandler.prototype.moveRight = function() {
 
 	}
 };
-
-
-var events = new EventHandler(grids);
-events.keyboardInput();
