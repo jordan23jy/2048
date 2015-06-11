@@ -1,6 +1,10 @@
-$grid-height: 80px;
-$grid-width: 80px;
-$grid-spacing: 5px;
+$container-width: 500px;
+$grid-spacing: 8px;
+$number-blocks: 4;
+$grid-width: (($container-width - ($grid-spacing * $number-blocks)) / $number-blocks);
+$grid-height: $grid-width;
+
+
 
 
 $text-color: #776E65;
@@ -47,8 +51,9 @@ html, body {
 
 .container {
 	padding-top: 40px;
+	padding-bottom: 40px;
 	margin: 0 auto;
-	width: 500px;
+	width: $container-width;
 }
 .row {
 	width: 100%;
@@ -118,7 +123,7 @@ html, body {
 #grids {
 	position: absolute;
 	background-color: darken($cell-color, 10%);
-	padding: 13px 13px 8px 8px;
+	padding: 13px 13px 6px 6px;
 	display: block;
 	// border-radius: 5px;
 	@include border-radius(5px);

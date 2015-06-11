@@ -40,6 +40,7 @@ html, body {
 
 .container {
   padding-top: 40px;
+  padding-bottom: 40px;
   margin: 0 auto;
   width: 500px; }
 
@@ -98,7 +99,7 @@ html, body {
 #grids {
   position: absolute;
   background-color: #decbb7;
-  padding: 13px 13px 8px 8px;
+  padding: 13px 13px 6px 6px;
   display: block;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -106,15 +107,15 @@ html, body {
   float: center;
   margin-top: 40px; }
   #grids .grid-cell {
-    height: 80px;
-    width: 80px;
+    height: 117px;
+    width: 117px;
     background-color: #eee4da;
     display: block;
     float: left;
     border-radius: 5px;
-    margin-left: 5px;
+    margin-left: 8px;
     text-align: center;
-    line-height: 80px;
+    line-height: 117px;
     font-size: 2em;
     -moz-animation: appear 200ms ease 100ms;
     -webkit-animation: appear 200ms ease 100ms;
@@ -123,7 +124,7 @@ html, body {
     -webkit-animation-fill-mode: backwards;
     animation-fill-mode: backwards; }
   #grids .grid-row {
-    margin-bottom: 5px; }
+    margin-bottom: 8px; }
     #grids .grid-row:after {
       content: "";
       display: block;

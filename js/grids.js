@@ -155,7 +155,7 @@ Grid.prototype.gridIsFull = function() {
 Grid.prototype.checkGameWon = function() {
 	var self = this;
 	for (var i = 0; i < self.cellArray.length; i++) {
-		if (self.cellArray[i].value === 16) {
+		if (self.cellArray[i].value === 2048) {
 			return true;
 		}
 	}
