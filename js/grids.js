@@ -1,4 +1,4 @@
-var Grid = function(noGrids, score) {
+var Grid = function(noGrids, scores) {
 	this.scores = scores;
 	this.noGrids = noGrids;
 	this.cellArray = [];

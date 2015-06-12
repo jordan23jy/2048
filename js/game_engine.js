@@ -2,11 +2,13 @@
 
 // var GameEngine = function() {
 // 	var NO_GRIDS = 4;
-// 	this.grids = new Grid(NO_GRIDS);
+// 	this.scores = new Scores();
+// 	this.grids = new Grid(NO_GRIDS, this.scores);
 // 	this.events = new EventHandler(this.grids);
 // };
 
 // GameEngine.prototype.init = function() {
+// 	this.scores.init()
 // 	this.grids.init();
 // 	this.events.keyboardInput();
 // };
