@@ -2,7 +2,7 @@
 
 A clone of [Gabriele Cirulli's](https://github.com/gabrielecirulli/2048) 2048 game
 
-Play game at [http://blog.jordanyong.com/2048/](http://blog.jordanyong.com/2048/)
+Play game at [http://obrin.github.io/2048/](http://obrin.github.io/2048/)
 
 ## Rules
 - Just use the arrow keys to move the tiles: up, down, left, right
